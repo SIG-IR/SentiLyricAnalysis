@@ -14,6 +14,9 @@ song_urls = json.loads(open(file_name).read())
 if not os.path.exists('songs'):
     os.makedirs('songs')
 
+# Dictionary stores song name as key and lyrics as value
+lyrics = {}
+
 requestCount = 0
 for url in song_urls:
     page = ''
@@ -37,4 +40,9 @@ for url in song_urls:
 
     # Writes the lyrics to a '.txt' file.
     with open(file_name, 'w') as outfile:
-        outfile.write(lyrics_text.encode('utf-8'))
+        outfile.write(lyrics_text)
+
+    # Extract song_name from url
+    song_name = url[19:]
+    # Create new dictionary entry for song lyrics
+    lyrics[song_name] = lyrics_text
