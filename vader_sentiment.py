@@ -15,9 +15,6 @@ analyzer = SentimentIntensityAnalyzer()
 def getSentimentScores(lyrics):
     sentimentScores = {}
     for song in lyrics:
-        # puts the song as key and the sentiment score as value
-        sentimentScores[song] = analyzer.polarity_scores(song)
-
+        # Puts the song as key and the sentiment score as value
+        sentimentScores[song] = analyzer.polarity_scores(lyrics[song])
     return sentimentScores
-
-
